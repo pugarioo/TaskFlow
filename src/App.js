@@ -1,51 +1,44 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import logo from './assets/logo.png';
 
-function Home() {
-  return (
-    <div>
-      <h1>🐳 Docker React App</h1>
-      <p>Welcome to your Dockerized React application!</p>
-      <p>This app is running in a Docker container with hot reload enabled.</p>
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <div>
-      <h1>About</h1>
-      <p>This is a sample React app containerized with Docker.</p>
-      <p>Features:</p>
-      <ul>
-        <li>React 18</li>
-        <li>React Router</li>
-        <li>Hot reload in development</li>
-        <li>Production-ready builds</li>
-      </ul>
-    </div>
-  );
-}
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <nav className="navbar">
-          <Link to="/" className="nav-link">Home</Link>
-          <Link to="/about" className="nav-link">About</Link>
-        </nav>
-        
+        <Navbar bg="primary" data-bs-theme="dark" expand="lg" fixed='top' className='rounded-0'>   
+          <Container className="d-flex justify-content-around align-items-center">
+            <Navbar.Brand>
+              <img
+              alt=""
+              src={logo}
+              width="30"
+              height="30"
+              className="d-inline-block align-top me-2"
+            />{' '}
+              TaskFlow</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ms-auto">
+                <Nav.Link as={Link} to='/home' >Home</Nav.Link>
+                <Nav.Link as={Link} to='/add_task' >Add Task</Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
         <main className="main-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
+
         </main>
       </div>
     </Router>
   );
 }
+
 
 export default App;
