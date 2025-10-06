@@ -1,188 +1,77 @@
-# 🐳 Docker React Development Environment
+## Task Management Application
 
-A complete Docker-based development and production environment for React applications with hot reload, optimized builds, and production-ready deployment.
+### Project Overview
 
-## 🚀 Quick Start
+**TaskFlow** is a simple, responsive web-based task management application built entirely with React Functional Components. The application enables users to create, organize, and track their tasks efficiently through an intuitive interface. It demonstrates modern React development practices using Hooks for state management, React Router for navigation, and Bootstrap for responsive styling.
 
-### Development Mode (Recommended for coding)
----powershell
-# Easy way - use the script
-.\start-dev.ps1
+This project was created as part of the **Prelim Laboratory Exam** for CCS112: Application Development and Emerging Technologies.
 
-# Manual way
-docker-compose up -d
+### Project Scope
 
+The goal is to build a task management system that leverages React's functional programming paradigm, modern state management techniques, and component-based architecture. The entire development process utilizes GitHub for version control and collaborative development, with clear branch management and merge workflows.
 
-### Production Mode (Optimized build)
----powershell
-# Easy way - use the script  
-.\start-prod.ps1
+### Features
 
-# Manual way
-docker-compose -f docker-compose.prod.yml up -d --build
+**Core Functionality:**
 
+-   Create new tasks with title and description
+-   Edit existing task details
+-   Delete completed or unwanted tasks
+-   Mark tasks as complete/incomplete
+-   Filter tasks by status (all, active, completed)
+-   Search tasks by keyword
 
-## 📦 What's Included
+**User Interface:**
 
-### 🛠️ Development Environment
-- **React 18** with hot reload
-- **React Router** for client-side routing
-- **Fast Refresh** for instant updates
-- **Volume mounting** for live code editing
-- **Node.js 20** Alpine-based image
+-   Clean, intuitive navigation between different views
+-   Real-time task updates without page refresh
+-   Bootstrap-styled components for consistent look and feel
 
-### 🏭 Production Environment
-- **Multi-stage build** for optimized size
-- **Nginx** web server with custom configuration
-- **Gzip compression** for faster loading
-- **Security headers** built-in
-- **Health checks** for monitoring
-- **Non-root user** for security
+### Core Technical Requirements
 
-## 🌐 Access Points
+**1. Functional Components:**
 
-| Environment | URL | Port |
-|------------|-----|------|
-| Development | http://localhost:3000 | 3000 |
-| Production | http://localhost:8080 | 8080 |
-| Health Check | http://localhost:8080/health | 8080 |
+-   All components built using React Functional Components
+-   No Class Components allowed
 
-## 📁 Project Structure
+**2. State Management:**
 
----
-docker-react/
-├── src/                    # React source code
-│   ├── App.js              # Main React component
-│   ├── App.css             # Styles
-│   └── index.js            # React entry point
-├── public/                 # Public assets
-│   └── index.html          # HTML template
-├── Dockerfile              # Production build configuration
-├── docker-compose.yml      # Development environment
-├── docker-compose.prod.yml # Production environment
-├── nginx.conf              # Nginx configuration
-├── .dockerignore           # Docker ignore rules
-├── start-dev.ps1           # Development startup script
-├── start-prod.ps1          # Production startup script
-└── README.md               # This file
----
+-   `useState` Hook for managing component and application state
+-   `useEffect` Hook for side effects and data persistence
+-   All data managed through React Hooks
 
-## 🛠️ Development Commands
+**3. Routing:**
 
----powershell
-# Start development environment
-docker-compose up -d
+-   `react-router-dom` library for navigation management
+-   Multiple views/pages (Home, Task List, Task Details, About)
+-   Dynamic routing for individual task viewing
 
-# View logs
-docker-compose logs -f react-dev
+**4. Styling:**
 
-# Stop environment
-docker-compose down
+-   React-Bootstrap or standard Bootstrap CSS integration
+-   Fully responsive design using Bootstrap grid system
+-   Bootstrap components for buttons, forms, cards, and navigation
 
-# Restart services
-docker-compose restart
+**5. GitHub Collaboration:**
 
-# Execute commands inside container
-docker-compose exec react-dev npm install package-name
-docker-compose exec react-dev npm test
+-   Shared GitHub repository for all team members
+-   Feature branch workflow (feature branches merging into main)
+-   Clear commit messages and pull request reviews
+-   Branch naming conventions (e.g., `feature/add-task`, `feature/task-filters`)
 
+### Technologies Used
 
-## 🏭 Production Commands
+-   **Frontend Framework:** React (Functional Components only)
+-   **State Management:** React Hooks (useState, useEffect)
+-   **Routing:** react-router-dom
+-   **Styling:** React-Bootstrap / Bootstrap CSS
+-   **Version Control:** Git & GitHub
+-   **Package Manager:** npm or yarn
 
----powershell
-# Build and start production
-docker-compose -f docker-compose.prod.yml up -d --build
+### Collaborators
 
-# View production logs
-docker-compose -f docker-compose.prod.yml logs -f react-prod
-
-# Stop production environment
-docker-compose -f docker-compose.prod.yml down
-
-# Check health
-curl http://localhost:8080/health
-
-
-## 🔧 Customization
-
-### Adding New Dependencies
----powershell
-# Add to package.json, then rebuild
-docker-compose exec react-dev npm install new-package
----
-
-### Environment Variables
-Create a `.env` file in the root directory:
----env
-REACT_APP_API_URL=http://localhost:8000
-REACT_APP_ENVIRONMENT=development
----
-
-### Nginx Configuration
-Edit `nginx.conf` for custom server settings, caching rules, or proxy configurations.
-
-## 🚨 Troubleshooting
-
-### Development Issues
-- **Port 3000 in use**: Change port in `docker-compose.yml`
-- **Hot reload not working**: Ensure `CHOKIDAR_USEPOLLING=true` is set
-- **Permission errors**: Check Docker Desktop file sharing settings
-
-### Production Issues
-- **Build fails**: Check `docker-compose -f docker-compose.prod.yml logs react-prod`
-- **Nginx errors**: Verify `nginx.conf` syntax
-- **Static files not loading**: Check build output in `/app/build`
-
-### Windows-Specific
-- **File watching issues**: The environment variables `CHOKIDAR_USEPOLLING` and `WATCHPACK_POLLING` are set for Windows compatibility
-- **Path issues**: Use PowerShell or CMD, not WSL for running scripts
-
-## 📈 Performance Features
-
-### Development
-- ✅ Hot reload with Fast Refresh
-- ✅ Persistent node_modules volume
-- ✅ Optimized file watching for Windows
-
-### Production  
-- ✅ Multi-stage build (smaller image size)
-- ✅ Gzip compression
-- ✅ Static asset caching
-- ✅ Security headers
-- ✅ Health monitoring
-- ✅ Non-root user execution
-
-## 🔍 Monitoring
-
-### Health Checks
-Both environments include health checks:
-- Development: Checks React dev server
-- Production: Nginx health endpoint
-
-### Logs
----powershell
-# Development logs
-docker-compose logs -f react-dev
-
-# Production logs  
-docker-compose -f docker-compose.prod.yml logs -f react-prod
----
-
-## 🛡️ Security Features
-
-- Non-root user in production
-- Security headers (X-Frame-Options, X-Content-Type-Options, etc.)
-- Minimal attack surface with Alpine images
-- Proper signal handling with dumb-init
-
----
-
-## 🤝 Usage Tips
-
-1. **Always use development mode** when coding
-2. **Test production builds** before deployment
-3. **Use the PowerShell scripts** for convenience
-4. **Check logs** if something doesn't work
-5. **Keep Docker Desktop updated** for best performance
-
-Happy coding! 🎉
+-   **Joshua Lopez** – pugarioo
+-   **Arvy Lacampuenga** – Binosaur0107
+-   **Stephanie Gapang** – stephvno07
+-   **Primo Victor Miguel Llenasas** – MiguelLlenasas
+-   **John Risk Labanda** – risktancinco
