@@ -4,7 +4,7 @@
 
 **TaskFlow** is a simple, responsive web-based task management application built entirely with React Functional Components. The application enables users to create, organize, and track their tasks efficiently through an intuitive interface. It demonstrates modern React development practices using Hooks for state management, React Router for navigation, and Bootstrap for responsive styling.
 
-This project was created as part of the **Prelim Laboratory Exam** for CCS112: Application Development and Emerging Technologies.
+This project was created as part of the **Prelim Acivity 2** for CCS112: Application Development and Emerging Technologies.
 
 ### Project Scope
 
