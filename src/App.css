@@ -26,6 +26,8 @@
 
 .main-content {
   min-height: 400px;
+  padding-top: 100px;
+  padding-bottom: 40px;
 }
 
 h1 {
@@ -48,4 +50,68 @@ ul {
 li {
   margin-bottom: 0.5rem;
   color: #666;
+}
+
+.card {
+  min-height: 180px;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: #003366;
+  font-weight: 600;
+}
+
+.text-muted {
+  font-style: italic;
+}
+
+.table {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  background-color: #003366 !important;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.table-responsive {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.5em 0.8em;
+}
+
+.container {
+  max-width: 900px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #b52a36;
 }
