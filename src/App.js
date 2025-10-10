@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import './App.css';
@@ -17,7 +17,7 @@ function App() {
     { id: 3, title: "House chores", description: "Clean the house", priority: "Low" },
   ]);
 
-  // ✅ Function to add a new task
+
   const addTask = (taskDetails) => {
     const newTask = {
       id: tasks.length + 1,
@@ -26,15 +26,14 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
-  // ✅ Function to delete a task by ID
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId));
+    setTasks(tasks.filter(task => task.id !== taskId)); 
   };
+
 
   return (
     <Router>
       <div className="App">
-        {/* ✅ Navbar shared across routes */}
         <Navbar bg="primary" data-bs-theme="dark" expand="lg" fixed="top" className="rounded-0">
           <Container className="d-flex justify-content-around align-items-center">
             <Navbar.Brand>
@@ -50,20 +49,19 @@ function App() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ms-auto">
-                <Nav.Link as={Link} to="/home">Home</Nav.Link>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
                 <Nav.Link as={Link} to="/add_task">Add Task</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
 
-        {/* ✅ Routing setup */}
-        <main className="main-content pt-5 mt-5">
+        <main className="main-content">
           <Routes>
             {/* Home page: display list of tasks */}
-            <Route path="/home" element={<TaskListView tasks={tasks} deleteTask={deleteTask} />} />
+            <Route path="/" element={<TaskListView tasks={tasks} deleteTask={deleteTask} />} />
             {/* Add task page: use addTask function */}
-            <Route path="/add_task" element={<AddTaskView addTask={addTask} />} />
+            <Route path="/add_task" element={<AddTaskView addFunction = {addTask}/>} />
           </Routes>
         </main>
       </div>

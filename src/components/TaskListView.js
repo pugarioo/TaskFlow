@@ -5,11 +5,11 @@ import Container from 'react-bootstrap/Container';
 
 function TaskListView({ tasks, deleteTask }) {
   return (
-    <Container className="mt-5 pt-4">
-      <h2 className="mb-4 text-center">📋 Task List</h2>
+    <Container className="pt-4">
+      <h2 className="mb-4 text-center">Task List</h2>
 
       <div className="table-responsive">
-        <Table striped bordered hover className="align-middle">
+        <Table className="">
           <thead>
             <tr>
               <th>#</th>

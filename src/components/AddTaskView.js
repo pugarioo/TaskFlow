@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-function AddTaskView({ addTask }) {
+function AddTaskView({ addFunction }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
+  const [isAdded, setIsAdded] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,15 +17,26 @@ function AddTaskView({ addTask }) {
       priority,
     };
 
-    addTask(newTask); // call temporary test function
+    setIsAdded(true);
+
+    addFunction(newTask); 
     setTitle("");
     setDescription("");
     setPriority("Low");
   };
 
+  useEffect(() => {
+    if (isAdded) {
+      const timer = setTimeout(() => { 
+
+
+        setIsAdded(false);
+      }, 2000);
+    }
+  }, [isAdded]);
   return (
     <div className="container mt-5">
-      <h2 className="text-center mb-4">Add New Task (Test Mode)</h2>
+      <h2 className="text-center mb-4">Add New Task</h2>
       <form className="card p-4 shadow-sm" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Task Title</label>
@@ -66,6 +78,8 @@ function AddTaskView({ addTask }) {
         </button>
       </form>
     </div>
+
+
   );
 }
 
