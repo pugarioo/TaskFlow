@@ -31,8 +31,6 @@ function AddTaskView({ addFunction }) {
   useEffect(() => {
     if (isAdded) {
       const timer = setTimeout(() => { 
-
-
         setIsAdded(false);
       }, 2000);
     }

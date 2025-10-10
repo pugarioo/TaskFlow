@@ -10,15 +10,6 @@ function TaskListView({ tasks, deleteTask }) {
 
       <div className="table-responsive">
         <Table className="modern-card-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Description</th>
-              <th>Priority</th>
-              <th>Action</th>
-            </tr>
-          </thead>
           <tbody>
             {tasks.length > 0 ? (
               tasks.map((task, index) => (

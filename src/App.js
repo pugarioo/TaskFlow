@@ -15,7 +15,9 @@ function App() {
     { id: 1, title: "Need to complete laboratory 2", description: "Finish Task 5 today", priority: "High" },
     { id: 2, title: "Push branch", description: "Check pull requests", priority: "Medium" },
     { id: 3, title: "House chores", description: "Clean the house", priority: "Low" },
-  ]);
+    { id: 4, title: "Update personal website", description: "Add new portfolio project and fix broken links.", priority: "High" },
+    { id: 5, title: "Grocery Shopping", description: "Buy vegetables, chicken, and bread.", priority: "Low" },
+]);
 
 
   const addTask = (taskDetails) => {
