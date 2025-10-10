@@ -220,3 +220,7 @@ h2 {
 .btn-danger:hover {
   background-color: #b52a36;
 }
+
+form {
+  min-height: 75%;
+}

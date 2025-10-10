@@ -30,7 +30,7 @@ function AddTaskView({ addFunction }) {
 
   useEffect(() => {
     if (isAdded) {
-      const timer = setTimeout(() => { 
+      const timer = setTimeout(() => {  
         setIsAdded(false);
       }, 2000);
     }
@@ -39,7 +39,7 @@ function AddTaskView({ addFunction }) {
   return (
     <div className="container mt-5 h-100 d-flex justify-content-center align-items-center">
       
-      <form className="card p-4 shadow-sm w-50 h-75" onSubmit={handleSubmit}>
+      <form className="card p-4 shadow-sm w-50" onSubmit={handleSubmit}>
         <h2 className="text-start mb-4 fw-bold">Add New Task</h2>
         <div className="mb-3">
           <label className="form-label">Task Title</label>
