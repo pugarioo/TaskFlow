@@ -11,8 +11,8 @@ import TaskListView from './components/TaskListView';
 function App() {
   const [tasks, setTasks] = useState([
     { id: 1, title: "need to complete laboratory 2", description: "Finish Task 5 today", priority: "High" },
-    { id: 2, title: "Push Code", description: "Check pull requests", priority: "Medium" },
-    { id: 3, title: "Update Documentation", description: "Revise API docs", priority: "Low" },
+    { id: 2, title: "Push branch", description: "Check pull requests", priority: "Medium" },
+    { id: 3, title: "house chores", description: "clean the house", priority: "Low" },
 
   ]);
 
