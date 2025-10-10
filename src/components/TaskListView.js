@@ -9,7 +9,7 @@ function TaskListView({ tasks, deleteTask }) {
       <h2 className="mb-4 text-center">Task List</h2>
 
       <div className="table-responsive">
-        <Table className="">
+        <Table className="modern-card-table">
           <thead>
             <tr>
               <th>#</th>
@@ -22,11 +22,11 @@ function TaskListView({ tasks, deleteTask }) {
           <tbody>
             {tasks.length > 0 ? (
               tasks.map((task, index) => (
-                <tr key={task.id}>
-                  <td>{index + 1}</td>
-                  <td>{task.title}</td>
-                  <td>{task.description}</td>
-                  <td>
+                <tr key={task.id} className="task-card">
+                  <td data-label="Task #">{index + 1}</td>
+                  <td data-label="Title">{task.title}</td>
+                  <td data-label="Description">{task.description}</td>
+                  <td data-label="Priority">
                     <span
                       className={`badge ${
                         task.priority === 'High'
@@ -39,11 +39,12 @@ function TaskListView({ tasks, deleteTask }) {
                       {task.priority}
                     </span>
                   </td>
-                  <td>
+                  <td data-label="Action">
                     <Button
                       variant="danger"
                       size="sm"
                       onClick={() => deleteTask(task.id)}
+                      className="delete-btn"
                     >
                       Delete
                     </Button>
@@ -52,7 +53,7 @@ function TaskListView({ tasks, deleteTask }) {
               ))
             ) : (
               <tr>
-                <td colSpan="5" className="text-center text-muted">
+                <td colSpan="5" className="text-center text-muted no-tasks">
                   No tasks available.
                 </td>
               </tr>
