@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Image from 'react-bootstrap/Image';
+import taskImage from '../assets/add_task.png';
+import Alert from 'react-bootstrap/Alert';
 
 function AddTaskView({ addFunction }) {
   const [title, setTitle] = useState("");
@@ -34,10 +37,12 @@ function AddTaskView({ addFunction }) {
       }, 2000);
     }
   }, [isAdded]);
+  
   return (
-    <div className="container mt-5">
-      <h2 className="text-center mb-4">Add New Task</h2>
-      <form className="card p-4 shadow-sm" onSubmit={handleSubmit}>
+    <div className="container mt-5 h-100 d-flex justify-content-center align-items-center">
+      
+      <form className="card p-4 shadow-sm w-50 h-75" onSubmit={handleSubmit}>
+        <h2 className="text-start mb-4 fw-bold">Add New Task</h2>
         <div className="mb-3">
           <label className="form-label">Task Title</label>
           <input
@@ -53,7 +58,7 @@ function AddTaskView({ addFunction }) {
           <label className="form-label">Description</label>
           <textarea
             className="form-control"
-            rows="3"
+            rows="7"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -76,7 +81,12 @@ function AddTaskView({ addFunction }) {
         <button type="submit" className="btn btn-primary w-100">
           Add Task
         </button>
+
+        <Alert show={isAdded} variant="success" className="mt-3">Task successfully added!</Alert>
       </form>
+      <div className="p-4 w-50 h-75">
+        <Image src={taskImage} className="h-100 w-100"></Image>
+      </div>
     </div>
 
 

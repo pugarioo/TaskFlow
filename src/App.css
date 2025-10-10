@@ -1,7 +1,6 @@
 .App {
   width: 100vw;
   margin: 0;
-  padding-top: 56px; /* Use 70px as a safe, generous padding to clear the Navbar */
 }
 
 .nav-link {
@@ -19,6 +18,7 @@
 .main-content {
   width: 100%;
   height: calc(100vh - 56px); 
+  margin-top: 56px;
 }
 
 h1 {

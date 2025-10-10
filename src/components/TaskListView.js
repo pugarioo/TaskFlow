@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 function TaskListView({ tasks, deleteTask }) {
   return (
     <Container className="pt-4">
-      <h2 className="mb-4 text-center">Task List</h2>
+      <h2 className="mb-4 text-start fw-bold">Task List</h2>
 
       <div className="table-responsive">
         <Table className="modern-card-table">
