@@ -6,12 +6,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import logo from './assets/logo.png';
+import AddTaskView from './components/AddTaskView';
+
 
 
 function App() {
+  const addTask = (task) => {
+    console.log("Task added:", task);
+    alert(`✅ Task Added!\n\nTitle: ${task.title}\nPriority: ${task.priority}`);
+  };
   return (
     <Router>
-      <div className="App">
+      <div className="App">     
+      <AddTaskView addTask={addTask} />
+    
         <Navbar bg="primary" data-bs-theme="dark" expand="lg" fixed='top' className='rounded-0'>   
           <Container className="d-flex justify-content-around align-items-center">
             <Navbar.Brand>
@@ -33,7 +41,6 @@ function App() {
           </Container>
         </Navbar>
         <main className="main-content">
-
         </main>
       </div>
     </Router>
