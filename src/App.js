@@ -45,18 +45,7 @@ function App() {
           </Container>
         </Navbar>
 
-        <main className="main-content">
-          <Routes>
-            <Route
-              path="/home"
-              element={<TaskListView tasks={tasks} deleteTask={deleteTask} />}
-            />
-            <Route
-              path="/add_task"
-              element={<p className="mt-5 pt-5 text-center">Add Task Page (coming soon)</p>}
-            />
-          </Routes>
-        </main>
+        <main className="main-content"></main>
       </div>
     </Router>
   );
