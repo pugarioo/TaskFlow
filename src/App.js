@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import './App.css';
@@ -10,15 +10,15 @@ import TaskListView from './components/TaskListView';
 import AddTaskView from './components/AddTaskView';
 
 function App() {
-  // ✅ Global task state (Task 3 responsibility)
   const [tasks, setTasks] = useState([
     { id: 1, title: "Need to complete laboratory 2", description: "Finish Task 5 today", priority: "High" },
     { id: 2, title: "Push branch", description: "Check pull requests", priority: "Medium" },
     { id: 3, title: "House chores", description: "Clean the house", priority: "Low" },
     { id: 4, title: "Update personal website", description: "Add new portfolio project and fix broken links.", priority: "High" },
     { id: 5, title: "Grocery Shopping", description: "Buy vegetables, chicken, and bread.", priority: "Low" },
-]);
+  ]);
 
+  const [lastdeleted, setLastDeleted] = useState(null);
 
   const addTask = (taskDetails) => {
     const newTask = {
@@ -29,8 +29,29 @@ function App() {
   };
 
   const deleteTask = (taskId) => {
-    setTasks(tasks.filter(task => task.id !== taskId)); 
+    setTasks(tasks.map(task => 
+      task.id === taskId ? { ...task, deleting: true } : task
+    ));
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTasks(prevTasks => prevTasks.filter(task => !task.deleting));
+    }, 500); // Animation duration
+
+    return () => clearTimeout(timer);
+  }, [tasks]);
+
+  useEffect(() => {
+    if (lastdeleted) {
+      const timer = setTimeout(() => {
+        setLastDeleted(null);
+      }, 5000); // Clear last deleted after 5 seconds
+    }
+  }, [lastdeleted]);
+
+
+
 
 
   return (
@@ -39,14 +60,8 @@ function App() {
         <Navbar bg="primary" data-bs-theme="dark" expand="lg" fixed="top" className="rounded-0">
           <Container className="d-flex justify-content-around align-items-center">
             <Navbar.Brand>
-              <img
-                alt=""
-                src={logo}
-                width="30"
-                height="30"
-                className="d-inline-block align-top me-2"
-              />{' '}
-              TaskFlow
+              <i class="fa-solid fa-bars-progress me-2"></i>
+                TaskFlow
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

@@ -13,7 +13,7 @@ function TaskListView({ tasks, deleteTask }) {
           <tbody>
             {tasks.length > 0 ? (
               tasks.map((task, index) => (
-                <tr key={task.id} className="task-card">
+                <tr key={task.id} className={`task-card ${task.deleting ? 'fade-out' : ''}`}>
                   <td data-label="Task #">{index + 1}</td>
                   <td data-label="Title">{task.title}</td>
                   <td data-label="Description">{task.description}</td>
@@ -32,12 +32,9 @@ function TaskListView({ tasks, deleteTask }) {
                   </td>
                   <td data-label="Action">
                     <Button
-                      variant="danger"
-                      size="sm"
+                      variant="outline-danger"      
                       onClick={() => deleteTask(task.id)}
-                      className="delete-btn"
-                    >
-                      Delete
+                    ><i class="fa-solid fa-trash"></i>
                     </Button>
                   </td>
                 </tr>

@@ -52,6 +52,11 @@ li {
   transform: translateY(-5px);
 }
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
 h2 {
   color: #003366;
   font-weight: 600;
@@ -71,9 +76,6 @@ h2 {
   border-spacing: 0 16px;
 }
 
-.modern-card-table thead {
-  display: none; /* Hide the header for a cleaner card look */
-}
 
 .modern-card-table tbody tr {
   display: block;
@@ -192,7 +194,7 @@ h2 {
 }
 
 /* Delete button improvements */
-.modern-card-table .delete-btn {
+.modern-card-table {
   border-radius: 6px;
   font-weight: 500;
   padding: 0.4rem 1rem;
@@ -209,16 +211,6 @@ h2 {
 
 .container {
   max-width: 900px;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  border: none;
-  transition: background-color 0.3s ease;
-}
-
-.btn-danger:hover {
-  background-color: #b52a36;
 }
 
 form {
